@@ -204,6 +204,8 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+export SERVER_ACC_ROOT="~/workdev/servers/contaazul-contabilidade-app-server-dist/contaazul-contabilidade-app-server"
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -214,9 +216,15 @@ alias runca='sh ~/workdev/servers/wildfly10-contaazul-1.0.0-SNAPSHOT/bin/standal
 
 alias buildca='mvn clean install -T4C -Dmaven.test.skip=true && cp ./contaazul-app/target/contaazul-app.ear ~/workdev/servers/wildfly10-contaazul-1.0.0-SNAPSHOT/standalone/deployments/contaazul-app.ear'
 
+alias buildcac='mvn clean install -T4C -Dmaven.test.skip=true && cp ~/workdev/accountancy/contaazul-contabilidade/target/contaazul-contabilidade.ear ~/workdev/servers/contaazul-contabilidade-app-server-dist/contaazul-contabilidade-app-server/standalone/deployments/contaazul-contabilidade.ear'
+
 alias cat="pygmentize -g"
 
 alias fixgrunt="echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
  1862  echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p"
 
 alias ngrok="~/home/fernanda/ngrok"
+
+alias runcac="sudo sh ~/workdev/servers/contaazul-contabilidade-app-server-dist/contaazul-contabilidade-app-server/bin/standalone.sh -P ~/workdev/servers/contaazul-contabilidade-app-server-dist/contaazul-contabilidade-app-server/standalone/configuration/app-server.properties"
+
+alias fixdocker="sudo docker-containerd-ctr --address /run/docker/containerd/docker-containerd.sock --namespace moby c rm $(docker ps -aq --no-trunc)"
